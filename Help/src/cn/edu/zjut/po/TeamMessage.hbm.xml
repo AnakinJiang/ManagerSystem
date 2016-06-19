@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.zjut.po.TeamMessage" table="teammessage" catalog="helpdb">
+        <id name="teamMessageID" type="int">
+            <column name="teamMessageID"/>
+            <generator class="increment"/>
+        </id>
+        <property name="messageSender" type="string">
+            <column name="messageSender" length="12"/>
+        </property>
+        <property name="senderIMG" type="string">
+            <column name="senderIMG" length="45"/>
+        </property>
+        <property name="messageTime" type="java.util.Date">
+            <column name="messageTime" />
+        </property>
+        <property name="messageContent" type="string">
+            <column name="messageContent" length="200" />
+        </property>
+        <property name="chatTeamID" type="string">
+            <column name="chatTeamID" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

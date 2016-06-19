@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  	"-//Apache Struts//XWork Validator 1.0.2//EN"
+  	"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="employee.employeeID">
+		<field-validator type="regex">
+            <param name="expression"><![CDATA[\d{12}]]></param>
+            <message>请输入有效的学号！</message>
+        </field-validator>
+	</field>
+	
+		<field name="employee.confirmPassword">
+	<field-validator type="fieldexpression">
+	<param name="expression">employee.employeePassword==employee.confirmPassword</param>
+	<message>确认密码和密码输入不一致</message>
+	</field-validator>
+	</field>
+	<field name="employee.employeePassword">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			   <message>请输入密码！</message>
+		</field-validator>
+	</field>
+
+	<field name="employee.employeeUserName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请输入用户名！</message>
+		</field-validator>
+	</field>
+    <field name="employee.employeeIDNum">
+		<field-validator type="regex">
+            <param name="expression"><![CDATA[\d{18}]]></param>
+            <message>请输入有效的身份证号码！</message>
+        </field-validator>
+	</field>
+
+	<field name="employee.employeeName">
+		<field-validator type="required">
+			<param name="trim">true</param>
+			<message>请输入真实姓名！</message>
+		</field-validator>
+	</field>
+	<field name="employee.agreement">
+		<field-validator type="required">
+			<param name="trim">true</param>
+			<message>请阅读并同意协议书！</message>
+		</field-validator>
+	</field>
+	<field name="employee.employeePhone">
+		<field-validator type="regex">
+            <param name="expression"><![CDATA[\d{11}]]></param>
+            <message>请输入有效的手机号码！</message>
+        </field-validator>
+	</field>
+	<field name="employee.employeeAddress">
+		<field-validator type="required">
+			<param name="trim">true</param>
+			<message>请输入您的寝室住址！</message>
+		</field-validator>
+	</field>
+	<field name="employee.agreement">
+		<field-validator type="fieldexpression">
+		<param name="expression">employee.agreement=="1"</param>
+			<message>请同意服务条款</message>
+		</field-validator>
+	</field> 
+</validators> 

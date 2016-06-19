@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.zjut.po.Manager" table="managerinfo" catalog="helpdb">
+		<id name="managerId" type="string">
+			<column name="managerId" length="45" />
+			<generator class="assigned" />
+		</id>
+		<property name="managerPassword" type="string">
+			<column name="managerPassword" length="45" />
+		</property>
+	</class>
+</hibernate-mapping>

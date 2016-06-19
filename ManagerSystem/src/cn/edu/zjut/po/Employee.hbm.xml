@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.zjut.po.Employee" table="employeeinfo" catalog="helpdb">
+        <id name="employeeID" type="string">
+            <column name="employeeID" length="12"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="employeePassword" type="string">
+            <column name="employeePassword" length="32"/>
+        </property>
+        <property name="employeeUserName" type="string">
+            <column name="employeeUserName" length="20" />
+        </property>
+        <property name="employeeIDNum" type="string">
+            <column name="employeeIDNum" length="18" />
+        </property>
+        <property name="employeeName" type="string">
+            <column name="employeeName" length="10" />
+        </property>
+        <property name="employeeSex" type="java.lang.Boolean">
+            <column name="employeeSex" />
+        </property>
+        <property name="employeeAge" type="int">
+            <column name="employeeAge"/>
+        </property>
+        <property name="employeePhone" type="string">
+            <column name="employeePhone" length="11" />
+        </property>
+        <property name="employeeAddress" type="string">
+            <column name="employeeAddress" length="50" />
+        </property>
+        <property name="employeeGrade" type="float">
+            <column name="employeeGrade"/>
+        </property>
+        <property name="employeeState" type="java.lang.Boolean">
+            <column name="employeeState"/>
+        </property>
+        <property name="employeeIMG" type="string">
+            <column name="employeeIMG" length="45"/>
+        </property>
+        <property name="employeeSignature" type="string">
+            <column name="employeeSignature" length="100"/>
+        </property>
+    </class>
+</hibernate-mapping>

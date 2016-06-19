@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  	"-//Apache Struts//XWork Validator 1.0.2//EN"
+  	"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+  	<!-- <field name="endTimeString">
+		<field-validator type="fieldexpression">
+			<param name="expression">startTimeString<=endTimeString/param>
+			<message>任务开始时间不能迟于任务结束时间</message>
+		</field-validator>
+	</field>    -->
+
+	<field name="order.salary">
+		<field-validator type="fieldexpression">
+			<param name="expression">order.salary>0.0</param>
+			<message>酬金必须为大于0的数</message>
+		</field-validator>
+	</field>
+   <field name="startTimeString">
+		<field-validator type="required">
+			<message>请输入任务开始时间</message>
+		</field-validator>
+	</field>
+		<field name="endTimeString">
+		<field-validator type="required">
+			<message>请输入任务结束时间</message>
+		</field-validator>
+	</field>
+	
+  <field name="number">
+	<field-validator type="fieldexpression">
+			<param name="expression">number>0</param>
+			<message>招募人数需大于0</message>
+		</field-validator>
+		<field-validator type="required">
+			<message>请输入招募人数</message>
+		</field-validator>
+	</field> 
+</validators>

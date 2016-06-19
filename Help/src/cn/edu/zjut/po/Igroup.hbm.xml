@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.zjut.po.Igroup" table="igroup" catalog="helpdb">
+		<id name="groupID" type="string">
+			<column name="groupID" length="32" />
+			<generator class="uuid" />
+		</id>
+		<property name="groupName" type="string">
+			<column name="groupName" length="16" />
+		</property>
+		<property name="groupDescribe" type="string">
+			<column name="groupDescribe" length="1024" />
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="createTime" />
+		</property>
+		<property name="moneyPool" type="double">
+			<column name="moneyPool" />
+		</property>
+		<property name="poolFull" type="double">
+			<column name="poolFull" />
+		</property>
+		<property name="rate" type="double">
+			<column name="rate" />
+		</property>
+	</class>
+</hibernate-mapping>

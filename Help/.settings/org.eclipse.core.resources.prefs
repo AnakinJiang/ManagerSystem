@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebRoot/TeamShouldKnow.jsp=UTF-8
+encoding//src/cn/edu/zjut/action/OrderUpdateAction.java=UTF-8
+encoding//src/cn/edu/zjut/dao/IOrderDAO.java=UTF-8
+encoding//src/cn/edu/zjut/dao/OrderDAO.java=UTF-8
+encoding//src/cn/edu/zjut/service/IMerchantOrderController.java=UTF-8
+encoding//src/cn/edu/zjut/service/MerchantRegisterController.java=UTF-8
+encoding//src/cn/edu/zjut/service/OrderUpdateController.java=UTF-8

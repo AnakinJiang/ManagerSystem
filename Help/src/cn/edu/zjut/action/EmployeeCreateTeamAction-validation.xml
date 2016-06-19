@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  	"-//Apache Struts//XWork Validator 1.0.2//EN"
+  	"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+ 	<field name="igroup.groupName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>队伍名不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="trim">true</param>
+			<param name="minlength">0</param>
+			<param name="maxlength">16</param>
+			<message>队伍名长度应小于16</message>
+		</field-validator>
+	</field>
+	<field name="igroup.groupDescribe">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>队伍宣言不能为空</message>
+		</field-validator>
+	</field>
+</validators>
+	
+

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.convention.default.parent.package" value="struts-default" />
+	<package name="strutsBean" extends="struts-default" namespace="/">
+	
+	<!-- 受雇者登陆 -->
+		<action name="EmployeeLogin" class="employeeLoginAction" method="login">
+			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="loginfailed">/EmployeeLogin.jsp</result>
+			<result name="input">/EmployeeLogin.jsp</result>
+		</action>
+	
+	<!-- 受雇者更新个人信息 -->
+		<action name="EmployeeUpdated" class="employeeUpdateAction" method="update">
+			<result name="updatesuccess" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="updatefailed" type="redirect">/EmployeeIndex.jsp</result>
+		</action>
+	
+	<!-- 存放保证金 -->
+		<action name="payPromise" class="employeeUpdateAction" method="payPromise">
+			<result name="succeed" type="redirect">/findMission.jsp</result>
+			<result name="failed" type="redirect">/error.jsp</result>
+		</action>
+	<!-- 受雇者注册 -->
+		<action name="EmployeeRegister" class="employeeRegisterAction" method="register">
+			<result name="registersuccess">/EmployeeRegisterPersonal.jsp</result>
+			<result name="input">/EmployeeRegisterBasic.jsp</result>
+			<result name="registerfailed">/EmployeeRegisterBasic.jsp</result>
+		</action>
+	
+	<!-- 受雇者完善个人信息 -->
+		<action name="EmployeeRegisterUpdate" class="employeeUpdateAction" method="registerUpdate">
+			<result name="updatesuccess">/EmployeeRegisterSuccess.jsp</result>
+			<result name="updatefailed">/EmployeeRegisterPersonal.jsp</result>
+		</action>
+		
+	<!-- 受雇者自动校验 -->
+		<action name="EmployeeCheck" class="employeeUpdateAction" method="check">
+			<result name="success">/EmployeeCheckedSuccess.jsp</result>
+			<result name="failed">/EmployeeCheckedPersonal.jsp</result>
+		</action>
+		
+	<!-- 受雇者人脸登录 -->
+		<action name="EmployeeFace" class="employeeFaceLoginAction" method="face">
+			<result name="loginsuccess" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="loginfailed">/EmployeeLogin.jsp</result>
+			<result name="input">/EmployeeLogin.jsp</result>
+		</action>
+		
+	<!-- 共享池捐献 -->
+		<action name="donate" class="employeeTeamAction" method="donate">
+			<result name="succeed" >/EmployeeTeam.jsp</result>
+			<result name="failed" >/EmployeeTeam.jsp</result>
+		</action>
+		
+	<!-- 商家登录 -->
+		<action name="MerchantLogin" class="merchantLoginAction"
+			method="login">
+			<result name="loginsuccess" type="redirect">/MerchantIndex.jsp</result>
+			<result name="loginfailed">/MerchantLogin.jsp</result>
+			<result name="input">/MerchantLogin.jsp</result>
+		</action>
+
+	<!-- 商家注册 -->
+		<action name="MerchantRegister" class="merchantRegisterAction"
+			method="register">
+			<result name="regSUCCESS">/MerchantRegisterPersonal.jsp</result>
+			<result name="regFAILED">/MerchantRegisterBasic.jsp</result>
+			<result name="input">/MerchantRegisterBasic.jsp</result>
+		</action>
+
+	<!-- 商家注册上传图片更新 -->
+		<action name="MerchantRegisterUpdate" class="merchantUpdateAction"
+			method="update">
+			<result name="updatesuccess">/MerchantRegisterSuccess.jsp
+			</result>
+			<result name="updatefailed">/MerchantRegisterPersonal.jsp
+			</result>
+		</action>
+		
+	<!--  商家更新界面 -->
+		<action name="MerchantUpdate" class="merchantUpdateAction"
+			method="update">
+			<result name="updatesuccess" type="redirect">/MerchantIndex.jsp</result>
+			<result name="updatefailed">/MerchantIndex.jsp</result>
+			<result name="input">/MerchantIndex.jsp</result>
+		</action>
+		
+	<!-- 商家上传图片 -->
+		<action name="merchantUploadIMG" class="merchantUploadAction" method="upload">
+			<result name="success">/MerchantRegisterPersonal.jsp</result>
+			<result name="failed">/MerchantRegisterPersonal.jsp</result>
+		</action>
+		
+	<!-- 商家裁剪图片 -->
+		<action name="merchantZoomImage" class="merchantUploadAction" method="zoom">
+			<result name="success">/MerchantRegisterPersonal.jsp</result>
+			<result name="failed">/MerchantRegisterPersonal.jsp</result>
+		</action>
+		
+	<!-- 订单发布 -->
+		<action name="merchantReleaseOrder" class="merchantReleaseOrderAction" method="releaseOrder">
+            <result name="success">/PutSuccess.jsp</result>
+            <result name="error">/PutFailed.jsp</result>
+            <result name="input">/MerchantPutMission.jsp</result>
+        </action>
+		
+	<!-- 返回未完成订单 -->
+        <action name="findUnfinishedOrder" class="merchantOrderFindByFinishAction" method="findUnfinishedOrder">
+            <result name="success">/MerchantHistoryMission.jsp</result>
+            <result name="error">/MerchantFindHistoryMissionFailed.jsp</result>
+        </action>
+
+        <!-- 返回完成订单 -->
+        <action name="findFinishedOrder" class="merchantOrderFindByFinishAction" method="findFinishedOrder">
+            <result name="success">/MerchantHistoryMission.jsp</result>
+            <result name="error">/MerchantFindHistoryMissionFailed.jsp</result>
+        </action>
+        
+        <action name="findPayedOrder" class="merchantOrderFindByPayAction" method="findPayedOrder">
+            <result name="success">/MerchantPay.jsp</result>
+            <result name="error">/MerchantPay.jsp</result>
+        </action>
+        
+        <action name="findUnpayedOrder" class="merchantOrderFindByPayAction" method="findUnpayedOrder">
+            <result name="success">/MerchantPay.jsp</result>
+            <result name="error">/MerchantPay.jsp</result>
+        </action>
+		<action name="UploadIMG" class="employeeUploadAction" method="upload">
+			<result name="success">/EmployeeRegisterPersonal.jsp</result>
+			<result name="failed">/EmployeeRegisterPersonal.jsp</result>
+		</action>
+		<action name="ZoomImage" class="employeeUploadAction" method="zoom">
+			<result name="success">/EmployeeRegisterPersonal.jsp</result>
+			<result name="failed">/EmployeeRegisterPersonal.jsp</result>
+		</action>
+		<action name="calculateMyFunds" class="employeeFundsAction" method="calculateMyFunds">
+			<result name="succeed" type="redirect">/EmployeeFunds.jsp</result>
+			<result name="failed" type="redirect">/EmployeeIndex.jsp</result>
+		</action>
+		<action name="AcceptOrder" class="orderUpdateAction" method="accept">
+			<result name="success">/timer.jsp</result>
+			<result name="failed">/findfailed.jsp</result>
+			<result name="noright">/noright.jsp</result>
+		</action>
+		<action name="SubmitOrder" class="orderUpdateAction" method="submit">
+			<result name="success">/EmployeeIndex.jsp</result>
+			<result name="failed">/error.jsp</result>
+		</action>
+		<!-- 商家支付订单 -->
+		<action name="MerchantPay" class="orderUpdateAction" method="merchantPay">
+			<result name="success">/MerchantPay.jsp</result>
+			<result name="failed">/error.jsp</result>
+		</action>
+		
+		<action name="OrderByDefault" class="orderDisplayAction" method="bydefault">
+			<result name="success">/findMission.jsp</result>
+			<result name="failed">/findMission.jsp</result>
+		</action>
+		<action name="OrderBySalary" class="orderDisplayAction" method="bysalary">
+			<result name="success">/findMission.jsp</result>
+			<result name="failed">/findMission.jsp</result>
+		</action>
+		<action name="OrderByRank" class="orderDisplayAction" method="byrank">
+			<result name="success">/findMission.jsp</result>
+			<result name="failed">/findMission.jsp</result>
+		</action>
+		<action name="OrderByNeed" class="orderDisplayAction" method="byneed">
+			<result name="success">/findMission.jsp</result>
+			<result name="failed">/findMission.jsp</result>
+		</action>
+		<action name="findAll" class="employeeHistoryAction" method="findAll">
+			<result name="succeed" >/EmployeeHistory.jsp</result>
+			<result name="failed" >/EmployeeHistory.jsp</result>
+		</action>
+		<action name="findWeek" class="employeeHistoryAction" method="findWeek">
+			<result name="succeed" >/EmployeeHistory.jsp</result>
+			<result name="failed" >/EmployeeHistory.jsp</result>
+		</action>
+		<action name="findMonth" class="employeeHistoryAction" method="findMonth">
+			<result name="succeed" >/EmployeeHistory.jsp</result>
+			<result name="failed" >/EmployeeHistory.jsp</result>
+		</action>
+		<action name="CheckDetail" class="orderDisplayAction" method="checkmerchant">
+			<result name="success" type="redirect">/EmployeeIndex.jsp</result>
+			<result name="failed">/findMission.jsp</result>
+		</action>
+		<!-- 搜索加入小组 -->
+		<action name="searchGroup" class="searchGroupAction" method="join">
+			<result name="joinsuccess" type="chain">findTeam</result>
+			<result name="joinfailed">/SearchGroup.jsp</result>
+		</action>
+		
+		
+		<action name="findTeam" class="employeeTeamAction" method="findTeam">
+			<result name="teamfound">/EmployeeTeam.jsp</result>
+			<result name="teamnotfound">/EmployeeNoTeam.jsp</result>
+		</action>
+		<action name="employeeCreateTeam" class="employeeCreateTeamAction" method="employeeCreateTeam">
+			<result name="success" type="chain">findTeam</result>
+			<result name="input">/EmployeeCreateTeam.jsp</result>
+			<result name="failed">/EmployeeCreateTeam.jsp</result>
+		</action>
+		<action name="employeeExitTeam" class="employeeTeamAction" method="employeeExitTeam">
+			<result name="success" type="chain">findTeam</result>
+		</action>
+		
+		<!-- 聊天 -->
+		<action name="chatsend" class="sendAction" method="index">
+		</action>
+		<action name="chatreceive" class="receiveAction" method="index">
+		</action>
+		<action name="chatgroup" class="chatGroupAction" method="create">
+		    <result name="success">/ChatWindow.jsp</result>
+		    <result name="failed">/error.jsp</result>
+		</action>
+		
+		<!-- 查看通知 -->
+		<action name="findNotice" class="noticeAction" method="find">
+			<result name="success">/lookNotice.jsp</result>
+			<result name="failed">/lookNotice.jsp</result>
+		</action>
+	</package>
+<!-- Overwrite Convention -->
+     <constant name="struts.convention.action.suffix" value="Controller" />
+     <constant name="struts.convention.action.mapAllMatches" value="true" />
+     <!--<constant name="struts.rest.content.restrictToGET" value="false" />-->
+     <constant name="struts.convention.default.parent.package" value="rest-default" />
+     <constant name="struts.convention.package.locators" value="action" />
+     <!-- <constant name="struts.rest.namespace" value="/rest" /> -->
+     <constant name="struts.convention.action.includeJars" value=".*?/_wl_cls_gen.*?jar(!/)?" />
+     <constant name="struts.convention.exclude.parentClassLoader" value="true" />
+     <constant name="struts.convention.action.fileProtocols" value="jar,zip,vfsfile,vfszip" />
+ 
+     <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
+     <constant name="struts.mapper.prefixMapping" value="/rest:rest,:struts" />
+     <constant name="struts.mapper.alwaysSelectFullNamespace" value="false" />
+ 
+    <package name="default" namespace="/rest" extends="struts-default" />
+	
+</struts>    

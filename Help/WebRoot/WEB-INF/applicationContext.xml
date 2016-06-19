@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	<!-- 查看通知 -->
+	<bean id="noticeDAO" class="cn.edu.zjut.dao.NoticeDAO" parent="baseDAO"/>
+	
+	<bean id="noticeController" class="cn.edu.zjut.service.NoticeController">
+		<property name="noticeDAO" ref="noticeDAO" />
+	</bean>
+	
+	<bean id="noticeAction" class="cn.edu.zjut.action.NoticeAction" scope="prototype">
+		<property name="noticeService" ref="noticeController" />
+	</bean>
+	
+	<!-- 聊天 -->
+	<bean id="sendAction" class="cn.edu.zjut.action.SendAction">
+	    <property name="chatController" ref="chatController"/>
+	</bean>
+	
+	<bean id="receiveAction" class="cn.edu.zjut.action.ReceiveAction">
+	    <property name="chatController" ref="chatController"/>
+	</bean>
+	
+	<bean id="chatGroupAction" class="cn.edu.zjut.action.ChatGroupAction">
+	    <property name="chatGroupController" ref="chatGroupController"/>
+	</bean>
+	
+	<bean id="chatController" class="cn.edu.zjut.service.ChatController">
+	    <property name="chatDAO" ref="chatDAO" />
+	</bean>
+	
+	<bean id="chatGroupController" class="cn.edu.zjut.service.ChatGroupController">
+	    <property name="chatGroupDAO" ref="chatGroupDAO"/>
+	</bean>
+	
+	<bean id="chatDAO" class="cn.edu.zjut.dao.ChatDAO" parent="baseDAO"/>
+	
+	<bean id="chatGroupDAO" class="cn.edu.zjut.dao.ChatGroupDAO" parent="baseDAO"/>
+	
+	<!-- 招募任务-->
+	<bean id="employeeHistoryAction" class="cn.edu.zjut.action.EmployeeHistoryAction" scope="prototype">
+		<property name="employeeHistoryController" ref="employeeHistoryController"/>
+	</bean>
+	
+	<bean id="employeeHistoryController" class="cn.edu.zjut.service.EmployeeHistoryController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<bean id="orderUpdateController" class="cn.edu.zjut.service.OrderUpdateController">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+	
+	<bean id="orderDisplayController" class="cn.edu.zjut.service.OrderDisplayController">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+	
+	<bean id="orderDAO" class="cn.edu.zjut.dao.OrderDAO" parent="baseDAO"/>
+	
+	<bean id="orderUpdateAction" class="cn.edu.zjut.action.OrderUpdateAction" scope="prototype">
+		<property name="orderUpdateController" ref="orderUpdateController" />
+	</bean>
+	
+	<bean id="orderDisplayAction" class="cn.edu.zjut.action.OrderDisplayAction" scope="prototype">
+		<property name="orderDisplayController" ref="orderDisplayController" />
+	</bean>
+	
+	
+	<bean id="employeeLoginController" class="cn.edu.zjut.service.EmployeeLoginController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<!-- 计算资产service -->
+	<bean id="employeeFundsController" class="cn.edu.zjut.service.EmployeeFundsController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	<!-- 受雇者注册 -->
+	<bean id="employeeRegisterController" class="cn.edu.zjut.service.EmployeeRegisterController">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+	
+	<bean id="baseDAO" class="cn.edu.zjut.dao.BaseHibernateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="employeeDAO" class="cn.edu.zjut.dao.EmployeeDAO" parent="baseDAO"/>
+	<!-- 登录 action -->
+	<bean id="employeeLoginAction" class="cn.edu.zjut.action.EmployeeLoginAction" scope="prototype">
+		<property name="employeeLoginController" ref="employeeLoginController" />
+	</bean>
+	
+	<bean id="employeeFaceLoginAction" class="cn.edu.zjut.action.EmployeeFaceLoginAction" scope="prototype">
+		<property name="employeeLoginController" ref="employeeLoginController" />
+	</bean>
+	<!-- 注册 action -->
+	<bean id="employeeRegisterAction" class="cn.edu.zjut.action.EmployeeRegisterAction" scope="prototype">
+		<property name="employeeRegisterController" ref="employeeRegisterController" />
+	</bean>
+	<!-- 计算资产 action -->
+	<bean id="employeeFundsAction" class="cn.edu.zjut.action.EmployeeFundsAction" scope="prototype">
+		<property name="employeeFundsController" ref="employeeFundsController" />
+	</bean>
+	<!-- 更新 action -->
+	<bean id="employeeUpdateAction" class="cn.edu.zjut.action.EmployeeUpdateAction" scope="prototype">
+		<property name="employeeRegisterController" ref="employeeRegisterController" />
+	</bean>
+	<!-- 上传头像action -->
+	<bean id="employeeUploadAction" class="cn.edu.zjut.action.EmployeeUploadAction" scope="prototype">
+	</bean>
+	
+	<!-- 商家DAO -->
+	<bean id="merchantDAO" class="cn.edu.zjut.dao.MerchantDAO" parent="baseDAO" />
+	
+	<!-- 商家登录service -->
+	<bean id="merchantLoginController" class="cn.edu.zjut.service.MerchantLoginController">
+		<property name="merchantDAO" ref="merchantDAO" />
+	</bean>
+	
+	<!-- 商家註冊service -->
+	 <bean id="merchantRegisterController" class="cn.edu.zjut.service.MerchantRegisterController" >
+        <property name="merchantDAO" ref="merchantDAO"/>
+    </bean>
+    
+    <!-- 商家注册action -->
+    <bean id="merchantRegisterAction" class="cn.edu.zjut.action.MerchantRegisterAction" scope="prototype">
+        <property name="merchantRegisterController" ref="merchantRegisterController"/>
+    </bean>
+    
+    <!-- 商家更新action -->
+    <bean id="merchantUpdateAction" class="cn.edu.zjut.action.MerchantUpdateAction" scope="prototype">
+        <property name="merchantRegisterController" ref="merchantRegisterController"/>
+    </bean>
+    
+    <!-- 商家上傳照片action -->
+    <bean id="merchantUploadAction" class="cn.edu.zjut.action.MerchantUploadAction" scope="prototype">
+	</bean>
+
+    <!-- 商家登录action -->
+    <bean id="merchantLoginAction" class="cn.edu.zjut.action.MerchantLoginAction" scope="prototype">
+		<property name="merchantLoginController" ref="merchantLoginController" />
+	</bean>
+	
+	<!-- 订单发布service -->
+	<bean id="merchantOrderController" class="cn.edu.zjut.service.MerchantOrderController">
+        <property name="orderDAO" ref="orderDAO"/>
+    </bean>
+
+    <!-- 订单发布action -->
+    <bean id="merchantReleaseOrderAction" class="cn.edu.zjut.action.MerchantOrderAction" scope="prototype">
+        <property name="orderReleaseController" ref="merchantOrderController"/>
+    </bean>
+
+	<!-- 返回订单action -->
+	<bean name="merchantOrderFindByFinishAction" class="cn.edu.zjut.action.MerchantOrdersFindByFinishAction" scope="prototype">
+        <property name="orderController" ref="merchantOrderController"/>
+    </bean>
+	
+	<!-- 返回已支付订单action -->
+	<bean name="merchantOrderFindByPayAction" class="cn.edu.zjut.action.MerchantOrdersFindByPayAction" scope="prototype">
+        <property name="orderController" ref="merchantOrderController"/>
+    </bean>
+	
+	<!-- 小组DAO -->
+	<bean id="groupDAO" class="cn.edu.zjut.dao.GroupDAO" parent="baseDAO" />
+	
+	<!-- 搜索小组service -->
+	<bean id="searchGroupController" class="cn.edu.zjut.service.SearchGroupController">
+        <property name="groupDAO" ref="groupDAO"/>
+        <property name="employeeDAO" ref="employeeDAO" />
+    </bean>
+	
+	<!-- 搜索小组action -->
+	<bean id="searchGroupAction" class="cn.edu.zjut.action.SearchGroupAction" scope="prototype">
+		<property name="searchGroupController" ref="searchGroupController" />
+	</bean>
+	
+	
+		<!-- 鏌ユ壘鏄惁鏈夐槦浼?-->
+	<bean id="employeeTeamAction" class="cn.edu.zjut.action.EmployeeTeamAction" scope="prototype">
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeTeamController" class="cn.edu.zjut.service.EmployeeTeamController">
+		<property name="employeeDAO" ref="employeeDAO" />
+		<property name="groupDAO" ref="groupDAO" />
+	</bean>
+	
+	<!-- 鍒涘缓闃熶紞 -->
+	
+	<bean id="employeeCreateTeamAction" class="cn.edu.zjut.action.EmployeeCreateTeamAction" scope="prototype">
+		<property name="employeeCreateTeamController" ref="employeeCreateTeamController"/>
+		<property name="employeeTeamController" ref="employeeTeamController"/>
+	</bean>
+	
+	<bean id="employeeCreateTeamController" class="cn.edu.zjut.service.EmployeeCreateTeamController">
+		<property name="igroupDAO" ref="groupDAO" />
+	</bean>
+	
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" 
+                    value="com.mysql.jdbc.Driver"/>
+		<property name="url" 
+                    value="jdbc:mysql://localhost:3306/helpdb"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+		    <list>
+			    <value>cn/edu/zjut/po/Employee.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Merchant.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Order.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Igroup.hbm.xml</value>
+			    <value>cn/edu/zjut/po/TeamMessage.hbm.xml</value>
+			    <value>cn/edu/zjut/po/ChatGroup.hbm.xml</value>
+			    <value>cn/edu/zjut/po/Notice.hbm.xml</value>
+		    </list>
+	    </property>
+	</bean>
+</beans>

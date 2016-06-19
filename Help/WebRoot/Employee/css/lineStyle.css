@@ -1,0 +1,116 @@
+/**
+ * Variable power
+ */
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-size: 10px;
+  font-weight: 50;
+}
+
+
+.chart {
+  min-height: 100px;
+  padding: 1em;
+}
+
+.chart--headline, .chart--subHeadline {
+  text-align: center;
+}
+
+.chart--headline {
+  position: relative;
+  font-weight: 50;
+  font-size: 16px;
+}
+.chart--headline:before {
+  position: absolute;
+  content: '';
+  bottom: 133%;
+  left: 50%;
+  width: 25%;
+  margin: 0 0 0 -12.5%;
+  border-top: 0px dashed #999999;
+}
+
+.chart--subHeadline {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.charts--container {
+  width: 100%;
+}
+@media screen and (min-width: 800px) {
+  .charts--container {
+    max-width: 800px;
+    margin-top: 0px;
+  }
+}
+
+.lineChart--area {
+  fill: url(#lineChart--gradientBackgroundArea);
+}
+
+.lineChart--areaLine {
+  fill: none;
+  stroke: #F45B4B;
+  stroke-width: 3;
+}
+
+.lineChart--bubble--label {
+  fill: none;
+  stroke: #F45B4B;
+  font-size: 12.6px;
+  font-weight: 50;
+}
+
+.lineChart--bubble--value {
+  fill: #fff;
+  stroke: #fff;
+  font-size: 18px;
+  font-weight: 50;
+}
+
+.lineChart--circle {
+  fill: #F45B4B;
+  stroke: #fff;
+  stroke-width: 3;
+}
+
+.lineChart--circle__highlighted {
+  fill: #fff;
+  stroke: #ff0000;
+}
+
+.lineChart--gradientBackgroundArea--top {
+  stop-color: #f78366;
+  stop-opacity: 0.1;
+}
+
+.lineChart--gradientBackgroundArea--bottom {
+  stop-color: #ff3737;
+  stop-opacity: 0.6;
+}
+
+.lineChart--svg {
+	
+}
+
+.lineChart--xAxisTicks .domain, .lineChart--xAxis .domain, .lineChart--yAxisTicks .domain {
+  display: none;
+}
+
+.lineChart--xAxis .tick line {
+  display: none;
+}
+
+/**
+ * Helper classes
+ */
+.hidden {
+  display: none;
+}
