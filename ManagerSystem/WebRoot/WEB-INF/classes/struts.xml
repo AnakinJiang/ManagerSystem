@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsBean" extends="struts-default" namespace="/">
+		<action name="managerLogin" class="managerAction" method="login">
+			<result name="success" type="redirectAction">
+				<param name="actionName">findAllMerchant</param>
+			</result>
+			<result name="fail">/Login.jsp</result>
+		</action>
+		<action name="findAllMerchant" class="managerAction" method="findAllMerchant">
+			<result name="success" type="redirect">/AllMerchant.jsp</result>
+			<result name="fail">/Login.jsp</result>
+		</action>
+		<action name="findPassMerchant" class="managerAction" method="findPassMerchant">
+			<result name="success" type="redirect">/PassCheck.jsp</result>
+			<!-- <result name="fail">/welcome.jsp</result> -->
+		</action>
+		<action name="findUnPassMerchant" class="managerAction" method="findUnPassMerchant">
+			<result name="success" type="redirect">/UnPassCheck.jsp</result>
+			<!-- <result name="fail">/welcome.jsp</result> -->
+		</action>
+
+		<action name="delete" class="merchantAction" method="delete">
+			<result name="success">/AllMerchant.jsp</result>
+			<result name="fail">/AllMerchant.jsp</result>
+		</action>
+		<action name="pass" class="merchantAction" method="pass">
+			<result name="success" type="redirectAction">
+				<param name="actionName">findAllMerchant</param>
+			</result>
+			<result name="fail">/AllMerchant.jsp</result>
+		</action>
+		<action name="lookNotice" class="noticeAction" method="find">
+			<result name="success">/ManagerLookNotice.jsp</result>
+			<result name="fail">/ManagerLookNotice.jsp</result>
+		</action>
+		<action name="noticeinsert" class="noticeAction" method="insert">
+			<result name="success" type="redirectAction">
+				<param name="actionName">lookNotice</param>
+			</result>
+			<result name="fail">/ManagerPub.jsp</result>
+		</action>
+		<action name="noticedelete" class="noticeAction" method="delete">
+			<result name="success" type="redirectAction">
+				<param name="actionName">lookNotice</param>
+			</result>
+			<result name="fail">/ManagerLookNotice.jsp</result>
+		</action>
+	</package>
+</struts>    

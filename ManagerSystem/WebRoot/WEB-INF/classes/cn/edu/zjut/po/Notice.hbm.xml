@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cn.edu.zjut.po.Notice" table="notice" catalog="helpdb">
+        <id name="number" type="string">
+            <column name="number" />
+            <generator class="uuid" />
+        </id>
+        <property name="yearr" type="int">
+            <column name="yearr" length="5" />
+        </property>
+        <property name="monthh" type="int">
+            <column name="monthh" length="2" />
+        </property>
+        <property name="datee" type="int">
+            <column name="datee" length="2" />
+        </property>
+        <!-- string中的s必须小写,因为type指的是hibernate中的类型，不是java中的String类型 -->
+        <property name="content" type="string">
+            <column name="content" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

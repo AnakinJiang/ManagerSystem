@@ -54,8 +54,8 @@ function check(){
 		<form action="merchantReleaseOrder" method="post" name="form1"
 			id="form1" class="contact-form" onclick="return check()">
 			<!-- 查看、更新个人信息 -->
-			<s:hidden name="merchant.merchantID"
-				value="%{#session.merchant.merchantID}" />
+			<s:hidden name="user.userid"
+				value="%{#session.user.userid}" />
 	
 			<!-- 账号 -->
 			<s:hidden name="merchant.merchantPassword"
